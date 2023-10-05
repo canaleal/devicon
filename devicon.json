@@ -3763,6 +3763,28 @@
         "color": "#b7111d",
         "aliases": []
     },
+    {
+        "name": "pulumi",
+        "tags": [
+            "infrastructure-as-code",
+            "cloud",
+            "multi-language"
+        ],
+        "versions": {
+            "svg": [
+                "original",
+                "original-wordmark",
+                "plain",
+                "plain-wordmark"
+            ],
+            "font": [
+                "plain",
+                "plain-wordmark"
+            ]
+        },
+        "color": "#f6bf29",
+        "aliases": []
+    },    
 	{
         "name": "putty",
         "tags": [
