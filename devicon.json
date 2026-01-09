@@ -4510,6 +4510,28 @@
         ]
     },
     {
+        "name": "frankenphp",
+        "altnames": [],
+        "tags": [
+            "programming",
+            "language"
+        ],
+        "versions": {
+            "svg": [
+                "original",
+                "original-wordmark",
+                "plain",
+                "plain-wordmark"
+            ],
+            "font": [
+                "plain",
+                "plain-wordmark"
+            ]
+        },
+        "color": "#b3d133",
+        "aliases": []
+    },
+    {
         "name": "fsharp",
         "altnames": [
             "f#"
