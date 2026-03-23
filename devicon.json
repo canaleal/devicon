@@ -3785,6 +3785,31 @@
         "aliases": []
     },
     {
+        "name": "emailjs",
+        "altnames": [],
+        "tags": [
+            "javascript"
+        ],
+        "versions": {
+            "svg": [
+                "original",
+                "original-wordmark",
+                "plain-wordmark"
+            ],
+            "font": [
+                "original",
+                "plain-wordmark"
+            ]
+        },
+        "color": "#ff8434",
+        "aliases": [
+            {
+                "base": "original",
+                "alias": "plain"
+            }
+        ]
+    },
+    {
         "name": "embeddedc",
         "altnames": [],
         "tags": [
@@ -7696,6 +7721,27 @@
         "aliases": []
     },
     {
+        "name": "lovable",
+        "altnames": [],
+        "tags": [
+            "ai"
+        ],
+        "versions": {
+            "svg": [
+                "original",
+                "original-wordmark",
+                "plain",
+                "plain-wordmark"
+            ],
+            "font": [
+                "plain",
+                "plain-wordmark"
+            ]
+        },
+        "color": "#000000",
+        "aliases": []
+    },
+    {
         "name": "love2d",
         "altnames": [
             "löve"
@@ -8522,6 +8568,27 @@
                 "alias": "plain"
             }
         ]
+    },
+    {
+        "name": "msbuild",
+        "altnames": [],
+        "tags": [
+            "build",
+            "dotnet"
+        ],
+        "versions": {
+            "svg": [
+                "original",
+                "plain",
+                "line"
+            ],
+            "font": [
+                "plain",
+                "line"
+            ]
+        },
+        "color": "#5B35DE",
+        "aliases": []
     },
     {
         "name": "msdos",
@@ -10001,6 +10068,37 @@
                 "base": "original-wordmark",
                 "alias": "plain-wordmark"
             }
+        ]
+    },
+    {
+        "name": "payloadcms",
+        "altnames": [
+            "payload"
+        ],
+        "tags": [
+            "cms",
+            "headless-cms"
+        ],
+        "versions": {
+            "svg": [
+                "original",
+                "original-wordmark"
+            ],
+            "font": [
+                "original",
+                "original-wordmark"
+            ]
+        },
+        "color": "#000000",
+        "aliases": [
+            {
+                "base": "original",
+                "alias": "plain"
+            },
+            {
+                "base": "original-wordmark",
+                "alias": "plain-wordmark"
+            }           
         ]
     },
     {
@@ -12565,7 +12663,7 @@
         },
         "color": "#8cc445",
         "aliases": []
-    },  
+    },
     {
         "name": "shadcn",
         "altnames": [],
@@ -14399,6 +14497,33 @@
             ]
         },
         "color": "#000000",
+        "aliases": []
+    },
+    {
+        "name": "typer",
+        "altnames": [
+            "fastapi"
+        ],
+        "tags": [
+            "cli"
+        ],
+        "versions": {
+            "svg": [
+                "original",
+                "original-wordmark",
+                "plain",
+                "plain-wordmark",
+                "line",
+                "line-wordmark"
+            ],
+            "font": [
+                "plain",
+                "plain-wordmark",
+                "line",
+                "line-wordmark"
+            ]
+        },
+        "color": "#ffffff",
         "aliases": []
     },
     {
