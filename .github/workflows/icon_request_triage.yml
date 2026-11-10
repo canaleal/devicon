@@ -26,22 +26,41 @@ jobs:
 
     steps:
       - name: Checkout (to read devicon.json)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           sparse-checkout: devicon.json
           sparse-checkout-cone-mode: false
 
       - name: Check request against devicon.json
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           TRIAGE_LABEL: awaiting triage
         with:
           script: |
             const fs = require('fs');
-            const issue = context.payload.issue;
             const { owner, repo } = context.repo;
 
-            if (issue.state === 'closed') return;
+            // Fetch the CURRENT state of the issue. When an issue is created with a
+            // label, GitHub fires both `opened` and `labeled`, so two runs happen.
+            // The event payload is a snapshot, so re-read the issue to see whether
+            // the first run already handled it.
+            const { data: issue } = await github.rest.issues.get({
+              owner, repo, issue_number: context.payload.issue.number,
+            });
+            const labelNames = issue.labels.map((l) => (typeof l === 'string' ? l : l.name));
+
+            if (issue.state === 'closed') {
+              core.info('Issue already closed; nothing to do.');
+              return;
+            }
+            if (labelNames.includes(process.env.TRIAGE_LABEL)) {
+              core.info('Issue already marked for triage; nothing to do.');
+              return;
+            }
+            if (labelNames.includes('in-develop')) {
+              core.info('Issue is in-develop; nothing to do.');
+              return;
+            }
 
             const normalize = (s) =>
               String(s)
