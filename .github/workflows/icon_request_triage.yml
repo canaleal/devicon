@@ -2,13 +2,13 @@ name: Icon request triage
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [labeled]
 
 permissions:
   contents: read
   issues: write
 
-# Avoid duplicate runs when an issue is opened with a label (fires opened + labeled)
+# Serialize runs for the same issue
 concurrency:
   group: icon-request-${{ github.event.issue.number }}
   cancel-in-progress: false
@@ -16,13 +16,11 @@ concurrency:
 jobs:
   triage:
     runs-on: ubuntu-latest
-    # - issue must carry the `request:icon` label
-    # - skip entirely if it carries `in-develop`
-    # - on `labeled`, only react when the label just added is `request:icon`
+    # Only run when the `request:icon` label is added, and skip if the issue
+    # carries `in-develop`.
     if: >
-      contains(github.event.issue.labels.*.name, 'request:icon') &&
-      !contains(github.event.issue.labels.*.name, 'in-develop') &&
-      (github.event.action == 'opened' || github.event.label.name == 'request:icon')
+      github.event.label.name == 'request:icon' &&
+      !contains(github.event.issue.labels.*.name, 'in-develop')
 
     steps:
       - name: Checkout (to read devicon.json)
@@ -40,10 +38,8 @@ jobs:
             const fs = require('fs');
             const { owner, repo } = context.repo;
 
-            // Fetch the CURRENT state of the issue. When an issue is created with a
-            // label, GitHub fires both `opened` and `labeled`, so two runs happen.
-            // The event payload is a snapshot, so re-read the issue to see whether
-            // the first run already handled it.
+            // Fetch the CURRENT state of the issue (the event payload is a snapshot)
+            // so we don't act on an issue that was already closed or triaged.
             const { data: issue } = await github.rest.issues.get({
               owner, repo, issue_number: context.payload.issue.number,
             });
